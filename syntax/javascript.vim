@@ -110,6 +110,8 @@ else
   syntax keyword jsNull           null
   syntax keyword jsThis           this
   syntax keyword jsReturn         return
+  syntax keyword jsDefer          defer
+  syntax keyword jsAwait          await
   syntax keyword jsUndefined      undefined
   syntax keyword jsNan            NaN
   syntax keyword jsPrototype      prototype
@@ -183,7 +185,7 @@ endif "DOM/HTML/CSS
 
 "" Code blocks
 syntax cluster jsExpression contains=jsComment,jsLineComment,jsDocComment,jsTemplateString,jsStringD,jsStringS,jsRegexpString,jsNumber,jsFloat,jsThis,jsOperator,jsBooleanTrue,jsBooleanFalse,jsNull,jsFunction,jsArrowFunction,jsGlobalObjects,jsExceptions,jsFutureKeys,jsDomErrNo,jsDomNodeConsts,jsHtmlEvents,jsDotNotation,jsBracket,jsParen,jsBlock,jsFuncCall,jsUndefined,jsNan,jsKeyword,jsStorageClass,jsPrototype,jsBuiltins,jsNoise
-syntax cluster jsAll        contains=@jsExpression,jsLabel,jsConditional,jsRepeat,jsReturn,jsStatement,jsTernaryIf,jsException
+syntax cluster jsAll        contains=@jsExpression,jsLabel,jsConditional,jsRepeat,jsReturn,jsAwait,jsDefer,jsStatement,jsTernaryIf,jsException
 syntax region  jsBracket    matchgroup=jsBrackets     start="\[" end="\]" contains=@jsAll,jsParensErrB,jsParensErrC,jsBracket,jsParen,jsBlock,@htmlPreproc fold
 syntax region  jsParen      matchgroup=jsParens       start="("  end=")"  contains=@jsAll,jsParensErrA,jsParensErrC,jsParen,jsBracket,jsBlock,@htmlPreproc fold
 syntax region  jsBlock      matchgroup=jsBraces       start="{"  end="}"  contains=@jsAll,jsParensErrA,jsParensErrB,jsParen,jsBracket,jsBlock,jsObjectKey,@htmlPreproc fold
@@ -256,6 +258,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsBranch               Conditional
   HiLink jsLabel                Label
   HiLink jsReturn               Statement
+  HiLink jsAwait                Statement
+  HiLink jsDefer                Statement
   HiLink jsRepeat               Repeat
   HiLink jsStatement            Statement
   HiLink jsException            Exception
